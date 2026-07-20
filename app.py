@@ -16,4 +16,4 @@ image = gr.Image()
 label = gr.Label()
 
 intf = gr.Interface(fn=classify_image, inputs=image, outputs=label)
-intf.launch()
+intf.launch(share=True)
