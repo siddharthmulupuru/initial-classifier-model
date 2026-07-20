@@ -1,9 +1,12 @@
 from fastai.vision.all import *
 import gradio as gr
 
+# model.pkl was exported with this labeling function; it must exist before load_learner
+def is_cat(x): return x[0].isupper()
+
 learn = load_learner('model.pkl')
 
-categories = ('Cat', 'Dog')  # double-check order matches your training notebook
+categories = ('Dog', 'Cat')  # matches learn.dls.vocab == [False, True]; True = cat
 
 def classify_image(img):
     pred, idx, probs = learn.predict(img)
